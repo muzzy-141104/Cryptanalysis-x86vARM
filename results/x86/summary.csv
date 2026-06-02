@@ -1,0 +1,4 @@
+algorithm,instruction_count,memory_reads,memory_writes,aesenc_count,aesenclast_count,sha256rnds2_count,sha256msg1_count,sha256msg2_count
+AES,529249390,107067921,8688363,85198100,6555000,0,0,0
+SHA256,286776734,34270834,1834950,0,0,52432000,19662000,19662000
+ChaCha20,338676989,37828686,14618105,0,0,0,0,0

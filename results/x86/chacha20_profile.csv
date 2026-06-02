@@ -1,0 +1,11 @@
+metric,value
+instruction_count,338676989
+memory_reads,37828686
+memory_writes,14618105
+aesenc_count,0
+aesdec_count,0
+aesenclast_count,0
+aesdeclast_count,0
+sha256rnds2_count,0
+sha256msg1_count,0
+sha256msg2_count,0

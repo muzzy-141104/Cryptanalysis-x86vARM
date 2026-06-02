@@ -1,0 +1,19 @@
+# Build artifacts
+build/
+*.o
+*.so
+!dynamorio_client/libdr_crypto_profiler.so
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Pin / DynamoRIO logs
+logs/
+*.log
+dynamorio_build/
+
+# OS
+.DS_Store
+Thumbs.db
