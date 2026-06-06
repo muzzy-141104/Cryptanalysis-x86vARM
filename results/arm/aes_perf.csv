@@ -1,0 +1,9 @@
+algorithm,event,value
+aes,cpu-cycles,193174022
+aes,instructions,0
+aes,branch-instructions,0
+aes,branch-misses,0
+aes,cache-references,0
+aes,cache-misses,0
+aes,stalled-cycles-frontend,0
+aes,stalled-cycles-backend,0

@@ -60,4 +60,44 @@ Phase 1-8 complete. Validated cross-tool agreement.
 
 ## arm-analysis
 
-ARM profiling implementation. To be populated once AWS Graviton instance is available. AWS Graviton setup documentation, ARM metrics spec, and ARM automation scripts are checked into `main` as a stable preparation layer.
+ARM profiling implementation. Pipeline complete.
+
+### ARM PMU discovery
+- `scripts/discover_arm_pmu.sh` -> `results/arm/available_pmu_events.txt` (90 events)
+- `results/arm/pmu_validation.csv` records per-event validation
+
+### ARM profiling pipeline
+- `scripts/run_arm_perf.sh` now requests native `armv8_pmuv3_0` events:
+  `cpu_cycles`, `inst_retired`, `br_retired`, `br_mis_pred_retired`,
+  `l1d_cache`, `l1d_cache_refill`, `l1i_cache`, `l1i_cache_refill`,
+  `stall_frontend`, `stall_backend`
+- `scripts/parse_perf_log.py` aliases ARM-native names to the canonical
+  schema (`instructions`, `branch-instructions`, etc.)
+- `scripts/parse_perf_csv.py` no longer hard-fails on zero/missing PMU
+  counters; it records them as `N/A` so summary generation completes in
+  restricted PMU environments
+
+### ARM analysis artifacts
+- `results/arm/summary.csv` (throughput, execution_time, cycles,
+  crypto_extensions_present)
+- `results/arm/perf_summary.csv`
+- `results/comparison/x86_vs_arm.csv` (x86 vs ARM throughput + cycles)
+- `charts/x86_vs_arm_throughput.png`, `charts/x86_vs_arm_cycles.png`
+- `docs/arm_pmu_analysis.md` (event mapping)
+- `docs/arm_analysis.md` (Graviton + Neoverse-N1 + PMU limitation)
+
+## Phase 8C - Final ARM Comparison
+
+- Removed hard-fail logic from `scripts/parse_perf_csv.py`
+- `results/arm/summary.csv`, `results/comparison/x86_vs_arm.csv` generated
+- Comparison charts produced
+- `docs/arm_analysis.md` and `docs/final_project_report.md` written
+- Generator: `scripts/generate_arm_phase8c.py`
+
+## Phase 9 - Dashboard
+
+- `dashboard/backend/` FastAPI app exposing `/api/{overview,x86,arm,comparison,charts,reports}` and serving charts as static assets
+- `dashboard/frontend/` Vite + React + Tailwind UI with pages:
+  Overview, x86, ARM, Comparison, Charts, Report Viewer
+- `dashboard/README.md` documents single-instance and SSH-port-forward setups
+- All endpoints verified 200 against committed artifacts

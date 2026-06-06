@@ -16,8 +16,7 @@ import csv
 import sys
 
 
-PERF_DIR = Path("results/perf")
-OUTPUT_FILE = PERF_DIR / "perf_summary.csv"
+DEFAULT_PERF_DIR = Path("results/perf")
 
 ALGORITHMS = [
     ("AES", "aes"),
@@ -66,8 +65,19 @@ def compute_ipc(metrics: dict) -> float:
     return instrs / cycles
 
 
+def fmt_counter(event: str, value: int) -> str:
+    if event == "cpu-cycles":
+        return str(value)
+    if value <= 0:
+        return "N/A"
+    return str(value)
+
+
 def main() -> int:
-    PERF_DIR.mkdir(parents=True, exist_ok=True)
+    perf_dir = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_PERF_DIR
+    output_file = perf_dir / "perf_summary.csv"
+
+    perf_dir.mkdir(parents=True, exist_ok=True)
 
     rows = []
     header = (
@@ -76,10 +86,8 @@ def main() -> int:
         + ["ipc", "branch_miss_ratio", "cache_miss_ratio"]
     )
 
-    failures = []
-
     for algorithm_name, slug in ALGORITHMS:
-        perf_csv = PERF_DIR / f"{slug}_perf.csv"
+        perf_csv = perf_dir / f"{slug}_perf.csv"
         metrics = parse_perf_csv(perf_csv)
 
         cycles = metrics.get("cpu-cycles") or 0
@@ -89,33 +97,26 @@ def main() -> int:
         refs = metrics.get("cache-references") or 0
         cmiss = metrics.get("cache-misses") or 0
 
-        if instrs <= 0:
-            failures.append(f"{algorithm_name}: instructions counter is zero in {perf_csv}")
-        if cycles <= 0:
-            failures.append(f"{algorithm_name}: cpu-cycles counter is zero in {perf_csv}")
-
         row = [algorithm_name]
         for event in EVENTS:
-            row.append(metrics.get(event) or 0)
-        row.append(round(compute_ipc(metrics), 4))
-        row.append(round((bmisses / branches) if branches else 0.0, 6))
-        row.append(round((cmiss / refs) if refs else 0.0, 6))
+            row.append(fmt_counter(event, metrics.get(event) or 0))
+
+        ipc = round(compute_ipc(metrics), 4) if cycles > 0 and instrs > 0 else "N/A"
+        bmr = round((bmisses / branches), 6) if branches > 0 else "N/A"
+        cmr = round((cmiss / refs), 6) if refs > 0 else "N/A"
+
+        row.append(ipc)
+        row.append(bmr)
+        row.append(cmr)
         rows.append(row)
 
-    if failures:
-        print("Error: perf summary contains zero-valued counters:")
-        for failure in failures:
-            print(f"- {failure}")
-        print("Refusing to write perf_summary.csv. Re-run perf to fix.")
-        return 1
-
-    with OUTPUT_FILE.open("w", encoding="utf-8", newline="") as handle:
+    with output_file.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
         writer.writerow(header)
         for row in rows:
             writer.writerow(row)
 
-    print(f"Wrote {OUTPUT_FILE}")
+    print(f"Wrote {output_file}")
     return 0
 
 

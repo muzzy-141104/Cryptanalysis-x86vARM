@@ -1,0 +1,11 @@
+
+ Performance counter stats for './build/aes_driver 1048576 100':
+
+   <not supported>      cpu-cycles:u                     #      nan GHz  cycles_frequency     
+
+       0.080107021 seconds time elapsed
+
+       0.078181000 seconds user
+       0.002004000 seconds sys
+
+

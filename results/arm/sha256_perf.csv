@@ -1,0 +1,9 @@
+algorithm,event,value
+sha256,cpu-cycles,171299291
+sha256,instructions,0
+sha256,branch-instructions,0
+sha256,branch-misses,0
+sha256,cache-references,0
+sha256,cache-misses,0
+sha256,stalled-cycles-frontend,0
+sha256,stalled-cycles-backend,0

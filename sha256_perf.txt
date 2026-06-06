@@ -1,0 +1,11 @@
+
+ Performance counter stats for './build/sha256_driver 1048576 100':
+
+   <not supported>      cpu-cycles:u                     #      nan GHz  cycles_frequency     
+
+       0.070826338 seconds time elapsed
+
+       0.067915000 seconds user
+       0.002996000 seconds sys
+
+

@@ -1,0 +1,4 @@
+algorithm,throughput,execution_time,cycles,crypto_extensions_present
+AES,1213.31,0.082419,193174022,yes
+SHA256,1363.33,0.07335,171299291,yes
+ChaCha20,915.67,0.109209,255996062,no

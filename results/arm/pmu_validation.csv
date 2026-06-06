@@ -1,0 +1,8 @@
+event_name,supported,notes
+inst_retired,yes,supported but measured zero (likely PMU access restriction in environment)
+br_retired,yes,supported but measured zero (likely PMU access restriction in environment)
+br_mis_pred_retired,yes,supported but measured zero (likely PMU access restriction in environment)
+l1d_cache,yes,supported but measured zero (likely PMU access restriction in environment)
+l1d_cache_refill,yes,supported but measured zero (likely PMU access restriction in environment)
+l1i_cache,yes,supported but measured zero (likely PMU access restriction in environment)
+l1i_cache_refill,yes,supported but measured zero (likely PMU access restriction in environment)

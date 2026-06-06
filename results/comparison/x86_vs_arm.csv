@@ -1,0 +1,4 @@
+algorithm,x86_throughput,arm_throughput,x86_execution_time,arm_execution_time,x86_cycles,arm_cycles,x86_crypto_extensions_present,arm_crypto_extensions_present
+AES,N/A,1213.31,N/A,0.082419,408330487,193174022,yes,yes
+SHA256,N/A,1363.33,N/A,0.07335,228017349,171299291,yes,yes
+ChaCha20,N/A,915.67,N/A,0.109209,116020731,255996062,yes,no

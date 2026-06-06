@@ -31,14 +31,14 @@ EVENTS = [
 
 # perf stat on Ubuntu 24.04 prints short aliases for some events.
 EVENT_ALIASES = {
-    "cpu-cycles": ["cpu-cycles", "cycles"],
-    "instructions": ["instructions"],
-    "branch-instructions": ["branch-instructions", "branches"],
-    "branch-misses": ["branch-misses"],
-    "cache-references": ["cache-references"],
-    "cache-misses": ["cache-misses"],
-    "stalled-cycles-frontend": ["stalled-cycles-frontend"],
-    "stalled-cycles-backend": ["stalled-cycles-backend"],
+    "cpu-cycles": ["cpu-cycles", "cycles", "cpu_cycles"],
+    "instructions": ["instructions", "inst_retired"],
+    "branch-instructions": ["branch-instructions", "branches", "br_retired"],
+    "branch-misses": ["branch-misses", "br_mis_pred_retired"],
+    "cache-references": ["cache-references", "l1d_cache"],
+    "cache-misses": ["cache-misses", "l1d_cache_refill"],
+    "stalled-cycles-frontend": ["stalled-cycles-frontend", "stall_frontend"],
+    "stalled-cycles-backend": ["stalled-cycles-backend", "stall_backend"],
 }
 
 # Build reverse map from alias to canonical name

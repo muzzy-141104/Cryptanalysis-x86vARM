@@ -1,0 +1,4 @@
+algorithm,cpu-cycles,instructions,branch-instructions,branch-misses,cache-references,cache-misses,stalled-cycles-frontend,stalled-cycles-backend,ipc,branch_miss_ratio,cache_miss_ratio
+AES,193174022,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+SHA256,171299291,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+ChaCha20,255996062,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
