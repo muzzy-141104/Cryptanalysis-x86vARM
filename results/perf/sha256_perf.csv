@@ -1,9 +1,9 @@
 algorithm,event,value
 sha256,cpu-cycles,228017349
-sha256,instructions,288988841
-sha256,branch-instructions,4639037
-sha256,branch-misses,175804
-sha256,cache-references,4076978
-sha256,cache-misses,205088
-sha256,stalled-cycles-frontend,2357521
+sha256,instructions,289924429
+sha256,branch-instructions,4378126
+sha256,branch-misses,192107
+sha256,cache-references,4162049
+sha256,cache-misses,245515
+sha256,stalled-cycles-frontend,3245182
 sha256,stalled-cycles-backend,0

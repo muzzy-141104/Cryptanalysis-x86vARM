@@ -22,7 +22,7 @@ Phase 1-8 complete. Validated cross-tool agreement.
 ### perf hardware counter pipeline
 - `scripts/run_perf.sh`, `scripts/parse_perf_log.py`, `scripts/parse_perf_csv.py`
 - Captures cpu-cycles, instructions, branch-instructions, branch-misses, cache-references, cache-misses, stalled-cycles-frontend
-- Validated non-zero instruction count (~537M for AES, ~290M for SHA256, ~348M for ChaCha20)
+- Validated non-zero instruction count (~538M for AES, ~290M for SHA256, ~348M for ChaCha20)
 - Parser refuses to emit zero-valued summary
 
 ### Analysis layer

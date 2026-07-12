@@ -1,11 +1,17 @@
 
  Performance counter stats for './build/chacha20_driver 1048576 100':
 
-   <not supported>      cpu-cycles:u                     #      nan GHz  cycles_frequency     
+         116020731      cpu-cycles                                                            
+         347711073      instructions                          #    2.95  insn per cycle         
+           5643515      branch-instructions                                                     #    3.88% of all branches        
+            218961      branch-misses                                                            
+          7551971      cache-references                                                          
+           283058      cache-misses                                                            
+           3726909      stalled-cycles-frontend                                               
+                  0      stalled-cycles-backend                                                
 
-       0.106997288 seconds time elapsed
+        0.121036889 seconds time elapsed
 
-       0.103112000 seconds user
-       0.004004000 seconds sys
-
+        0.103421000 seconds user
+        0.003902000 seconds sys
 

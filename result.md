@@ -9,7 +9,7 @@ analysis document in `docs/`.
 
 1. **Best machine per algorithm on this data**:
    - **AES-256-CBC**: x86 wins. AESENC + AESENCLAST on a single AES unit
-     give the lowest cycles per byte (~4 cycles/byte) of the three
+     give the lowest cycles per byte (~4.08 cycles/byte) of the three
      algorithms on the Ryzen 5 7535HS.
    - **SHA-256**: x86 wins, by a smaller margin. SHA-NI is fast but not as
      tightly uop-pipelined as AESENC; on this Graviton2, SHA-256 actually
@@ -18,7 +18,7 @@ analysis document in `docs/`.
    - **ChaCha20**: ARM (Graviton2) is competitive. There is no hardware
      acceleration on either side, so the comparison is pure software
      throughput. ChaCha20 has the highest IPC of the three algorithms on
-     x86 (2.86) and ChaCha20 cycles per byte on ARM are higher than on
+     x86 (2.95) and ChaCha20 cycles per byte on ARM are higher than on
      x86, but the cycle ratio x86/ARM is the smallest of the three.
 2. **Best algorithm per goal**:
    - **Throughput, lowest cycle cost**: AES-256-CBC, by a wide margin.
@@ -43,9 +43,9 @@ analysis document in `docs/`.
 
 | Algorithm | Pin instr | DR instr | perf instr | perf cycles | perf IPC | Branch miss % | L1D miss % | AESENC | SHA256RNDS2 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| AES-256-CBC | 529,249,390 | 528,194,004 | 537,137,518 | 408,330,487 | 1.32 | 0.24% | 3.67% | 85,198,100 | 0 |
-| SHA-256 | 286,776,734 | 285,724,743 | 288,988,841 | 228,017,349 | 1.27 | 3.79% | 5.03% | 0 | 52,432,000 |
-| ChaCha20 | 338,676,989 | 337,622,833 | 342,539,711 | 116,020,731 | 2.95 | 3.48% | 3.18% | 0 | 0 |
+| AES-256-CBC | 529,249,390 | 528,194,004 | 537,659,518 | 408,330,487 | 1.32 | 0.26% | 5.18% | 85,198,100 | 0 |
+| SHA-256 | 286,776,734 | 285,724,743 | 289,924,429 | 228,017,349 | 1.27 | 4.39% | 5.90% | 0 | 52,432,000 |
+| ChaCha20 | 338,676,989 | 337,622,833 | 347,711,073 | 116,020,731 | 2.95 | 3.88% | 3.75% | 0 | 0 |
 
 Per-byte cost on x86 (1 MB x 100 iterations = 100 MB processed):
 
@@ -107,13 +107,13 @@ absolute throughput numbers stand on their own: on this Graviton2,
 
 ### Best algorithm for cache locality
 
-- ChaCha20 has the lowest L1D miss rate on x86 (3.18%). It is streaming
+- ChaCha20 has the lowest L1D miss rate on x86 (3.75%). It is streaming
   and has a very regular access pattern. SHA-256 is the worst on x86
-  (5.03%) because of the message-schedule expansion.
+  (5.90%) because of the message-schedule expansion.
 
 ### Best algorithm for branch-predictor friendliness
 
-- AES-256-CBC (0.24% miss rate on x86). The round structure is a small
+- AES-256-CBC (0.26% miss rate on x86). The round structure is a small
   fixed-iteration loop.
 
 ### Best machine for AES

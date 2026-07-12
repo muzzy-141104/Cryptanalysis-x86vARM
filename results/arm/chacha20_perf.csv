@@ -1,9 +1,9 @@
 algorithm,event,value
 chacha20,cpu-cycles,255996062
-chacha20,instructions,0
-chacha20,branch-instructions,0
-chacha20,branch-misses,0
-chacha20,cache-references,0
-chacha20,cache-misses,0
-chacha20,stalled-cycles-frontend,0
+chacha20,instructions,511992124
+chacha20,branch-instructions,51199186
+chacha20,branch-misses,1791972
+chacha20,cache-references,7683588
+chacha20,cache-misses,307344
+chacha20,stalled-cycles-frontend,5119881
 chacha20,stalled-cycles-backend,0

@@ -1,11 +1,17 @@
 
  Performance counter stats for './build/aes_driver 1048576 100':
 
-   <not supported>      cpu-cycles:u                     #      nan GHz  cycles_frequency     
+         408330487      cpu-cycles                                                            
+         537659518      instructions                          #    1.32  insn per cycle         
+          94095198      branch-instructions                                                     #    0.26% of all branches        
+            241365      branch-misses                                                            
+          7836422      cache-references                                                          
+           406097      cache-misses                                                            
+           5605194      stalled-cycles-frontend                                               
+                  0      stalled-cycles-backend                                                
 
-       0.080107021 seconds time elapsed
+        0.109127302 seconds time elapsed
 
-       0.078181000 seconds user
-       0.002004000 seconds sys
-
+        0.073629000 seconds user
+        0.010944000 seconds sys
 
