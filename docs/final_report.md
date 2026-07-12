@@ -148,9 +148,9 @@ The captured events are: `cpu-cycles`, `instructions`, `branch-instructions`, `b
 
 | Algorithm | Pin | DynamoRIO | perf | Pin vs perf |
 |---|---:|---:|---:|---:|
-| AES | 529,249,390 | 528,193,394 | 537,659,518 | 1.02x |
-| SHA256 | 286,776,734 | 285,724,103 | 289,924,429 | 1.01x |
-| ChaCha20 | 338,676,989 | 337,622,186 | 347,711,073 | 1.03x |
+| AES | 529,249,390 | 528,194,004 | 537,659,518 | 1.02x |
+| SHA256 | 286,776,734 | 285,724,743 | 289,924,429 | 1.01x |
+| ChaCha20 | 338,676,989 | 337,622,833 | 347,711,073 | 1.03x |
 
 The slight DBI under-count (~1-2%) is expected and is due to the way JIT and DBI frameworks account for some housekeeping code.
 
@@ -158,9 +158,9 @@ The slight DBI under-count (~1-2%) is expected and is due to the way JIT and DBI
 
 | Algorithm | Pin reads | Pin writes | DR reads | DR writes |
 |---|---:|---:|---:|---:|
-| AES | 107,067,921 | 8,688,363 | 107,064,224 | 7,628,696 |
-| SHA256 | 34,270,834 | 1,834,950 | 34,267,424 | 777,514 |
-| ChaCha20 | 37,828,686 | 14,618,105 | 37,825,267 | 13,558,577 |
+| AES | 107,067,921 | 8,688,363 | 107,064,357 | 7,628,696 |
+| SHA256 | 34,270,834 | 1,834,950 | 34,267,566 | 777,519 |
+| ChaCha20 | 37,828,686 | 14,618,105 | 37,825,412 | 13,558,582 |
 
 Reads agree to within 0.01% across Pin and DynamoRIO. Writes show a documented small gap, attributed to differences in how the two engines attribute implicit microcoded writes.
 
@@ -188,9 +188,9 @@ SHA-NI opcodes dominate the SHA256 workload, with the message schedule opcodes (
 
 | Algorithm | IPC |
 |---|---:|
-| AES | 1.33 |
-| SHA256 | 1.29 |
-| ChaCha20 | 2.86 |
+| AES | 1.32 |
+| SHA256 | 1.27 |
+| ChaCha20 | 2.95 |
 
 ChaCha20 achieves the highest IPC because it is a small, regular ARX loop with high ILP. AES and SHA256 spend more cycles in specialized units and serialization points.
 

@@ -105,9 +105,9 @@ After the pipeline completes, verify the following invariants:
 
    | Algorithm | Pin | DynamoRIO | Diff |
    |---|---:|---:|---:|
-   | AES | 529,249,390 | 528,193,394 | 0.20% |
-   | SHA256 | 286,776,734 | 285,724,103 | 0.37% |
-   | ChaCha20 | 338,676,989 | 337,622,186 | 0.31% |
+   | AES | 529,249,390 | 528,194,004 | 0.20% |
+   | SHA256 | 286,776,734 | 285,724,743 | 0.37% |
+   | ChaCha20 | 338,676,989 | 337,622,833 | 0.31% |
 
 3. `perf` instructions are within 1-3% of Pin:
 

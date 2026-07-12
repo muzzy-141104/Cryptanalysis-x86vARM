@@ -46,9 +46,9 @@ The fix is two-fold:
 
 | Algorithm | Pin instr | DR before | DR after | DR/Pin before | DR/Pin after |
 |---|---:|---:|---:|---:|---:|
-| AES | 529,249,390 | 3,324,703,590 | 528,193,394 | 6.28x | 1.00x |
-| SHA256 | 286,776,734 | 47,420,595,499 | 285,724,103 | 165.36x | 1.00x |
-| ChaCha20 | 338,676,989 | 45,309,323,978 | 337,622,186 | 133.77x | 1.00x |
+| AES | 529,249,390 | 3,324,703,590 | 528,194,004 | 6.28x | 1.00x |
+| SHA256 | 286,776,734 | 47,420,595,499 | 285,724,743 | 165.36x | 1.00x |
+| ChaCha20 | 338,676,989 | 45,309,323,978 | 337,622,833 | 133.77x | 1.00x |
 
 After results show instruction count within 0.30% of Pin across all three algorithms.
 
@@ -56,9 +56,9 @@ After results show instruction count within 0.30% of Pin across all three algori
 
 | Algorithm | Pin reads | DR reads | DR/Pin |
 |---|---:|---:|---:|
-| AES | 107,067,921 | 107,064,224 | 1.00x |
-| SHA256 | 34,270,834 | 34,267,424 | 1.00x |
-| ChaCha20 | 37,828,686 | 37,825,267 | 1.00x |
+| AES | 107,067,921 | 107,064,357 | 1.00x |
+| SHA256 | 34,270,834 | 34,267,566 | 1.00x |
+| ChaCha20 | 37,828,686 | 37,825,412 | 1.00x |
 
 DR reads are within 0.01% of Pin for all three algorithms.
 
@@ -67,8 +67,8 @@ DR reads are within 0.01% of Pin for all three algorithms.
 | Algorithm | Pin writes | DR writes | DR/Pin |
 |---|---:|---:|---:|
 | AES | 8,688,363 | 7,628,696 | 0.878x |
-| SHA256 | 1,834,950 | 777,514 | 0.424x |
-| ChaCha20 | 14,618,105 | 13,558,577 | 0.928x |
+| SHA256 | 1,834,950 | 777,519 | 0.424x |
+| ChaCha20 | 14,618,105 | 13,558,582 | 0.928x |
 
 The remaining write-count gap has three plausible sources:
 

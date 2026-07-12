@@ -29,15 +29,15 @@ This document explains how the perf hardware counters relate to the Pin and Dyna
 
 The unified comparison file aligns per-algorithm metrics across the three DBI backends and the hardware perf backend:
 
-- pin_instructions
-- dynamorio_instructions
-- perf_instructions
-- perf_ipc
-- perf_cpu-cycles
-- perf_branch_miss_ratio
-- perf_cache_miss_ratio
-- aesenc_count, aesenclast_count
-- sha256rnds2_count, sha256msg1_count, sha256msg2_count
+- pin_instructions: AES 529M, SHA256 287M, ChaCha20 339M
+- dynamorio_instructions: AES 528M, SHA256 286M, ChaCha20 338M
+- perf_instructions: AES 538M, SHA256 290M, ChaCha20 348M
+- perf_ipc: AES 1.32, SHA256 1.27, ChaCha20 2.95
+- perf_cpu-cycles: AES 408M, SHA256 228M, ChaCha20 116M
+- perf_branch_miss_ratio: AES 0.26%, SHA256 4.39%, ChaCha20 3.88%
+- perf_cache_miss_ratio: AES 5.18%, SHA256 5.90%, ChaCha20 3.75%
+- aesenc_count: 85M, aesenclast_count: 6.5M
+- sha256rnds2_count: 52M, sha256msg1_count: 19.6M, sha256msg2_count: 19.6M
 
 ## Why Algorithms Behave Differently at the Microarchitecture Level
 

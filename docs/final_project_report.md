@@ -84,9 +84,9 @@ drivers/      -> <binary> <size> <iters>
 
 | Algorithm | Pin | DynamoRIO | perf | Pin vs perf |
 |---|---:|---:|---:|---:|
-| AES | 529,249,390 | 528,193,394 | 537,659,518 | 1.02x |
-| SHA256 | 286,776,734 | 285,724,103 | 289,924,429 | 1.01x |
-| ChaCha20 | 338,676,989 | 337,622,186 | 347,711,073 | 1.03x |
+| AES | 529,249,390 | 528,194,004 | 537,659,518 | 1.02x |
+| SHA256 | 286,776,734 | 285,724,743 | 289,924,429 | 1.01x |
+| ChaCha20 | 338,676,989 | 337,622,833 | 347,711,073 | 1.03x |
 
 The slight DBI under-count (~1–2%) is expected and is due to the way JIT and
 DBI frameworks account for housekeeping code.
@@ -95,9 +95,9 @@ DBI frameworks account for housekeeping code.
 
 | Algorithm | Pin reads | Pin writes | DR reads | DR writes |
 |---|---:|---:|---:|---:|
-| AES | 107,067,921 | 8,688,363 | 107,064,224 | 7,628,696 |
-| SHA256 | 34,270,834 | 1,834,950 | 34,267,424 | 777,514 |
-| ChaCha20 | 37,828,686 | 14,618,105 | 37,825,267 | 13,558,577 |
+| AES | 107,067,921 | 8,688,363 | 107,064,357 | 7,628,696 |
+| SHA256 | 34,270,834 | 1,834,950 | 34,267,566 | 777,519 |
+| ChaCha20 | 37,828,686 | 14,618,105 | 37,825,412 | 13,558,582 |
 
 ### 3.3 AES-NI and SHA-NI Usage
 
@@ -111,9 +111,9 @@ DBI frameworks account for housekeeping code.
 
 | Algorithm | IPC | Branch miss % | Cache miss % |
 |---|---:|---:|---:|
-| AES | 1.33 | 0.26% | 5.18% |
-| SHA256 | 1.29 | 4.39% | 5.90% |
-| ChaCha20 | 2.86 | 3.88% | 3.75% |
+| AES | 1.32 | 0.26% | 5.18% |
+| SHA256 | 1.27 | 4.39% | 5.90% |
+| ChaCha20 | 2.95 | 3.88% | 3.75% |
 
 ## 4. ARM Analysis (AWS Graviton2, Neoverse-N1)
 
